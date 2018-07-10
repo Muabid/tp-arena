@@ -10,7 +10,10 @@ import repos.RepoAlumnos;
 @Observable
 public class AlumnoViewModel {
 	private Alumno alumnoSeleccionado;
-	private List<Alumno> listadoAlumnos;
+
+	public AlumnoViewModel(Alumno alumno) {
+		this.alumnoSeleccionado = alumno;
+	}
 
 	public Alumno getAlumnoSeleccionado() {
 		return alumnoSeleccionado;
@@ -18,19 +21,6 @@ public class AlumnoViewModel {
 
 	public void setAlumnoSeleccionado(Alumno alumnoSeleccionado) {
 		this.alumnoSeleccionado = alumnoSeleccionado;
-	}
-
-	public List<Alumno> getListadoAlumnos() {
-		return listadoAlumnos;
-	}
-
-	public void setListadoAlumnos(List<Alumno> listadoAlumnos) {
-		this.listadoAlumnos = listadoAlumnos;
-	}
-
-	public AlumnoViewModel(Alumno alumno) {
-		this.alumnoSeleccionado = alumno;
-		this.listadoAlumnos = RepoAlumnos.get();
 	}
 
 }

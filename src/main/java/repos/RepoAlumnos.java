@@ -15,6 +15,10 @@ public class RepoAlumnos {
 	static public List<Alumno> get(){
 		return alumnos;
 	}
+
+	public static Alumno buscar(String legajo) {
+		return alumnos.stream().filter(a->a.getLegajo().equals(legajo)).findFirst().get();
+	}
 	
 	
 }

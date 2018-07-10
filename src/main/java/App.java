@@ -22,7 +22,7 @@ public class App extends Application {
 			Alumno a= new Alumno("Bruno", "Cobos", "1223", "Muabid",Arrays.asList(asig,asig2));
 			AlumnoViewModel al = new AlumnoViewModel(a);
 			
-			return new AlumnoWindow(this,al);
+			return new AlumnoWindow(this,a);
 		}
 	}
 	
