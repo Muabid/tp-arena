@@ -14,6 +14,11 @@ public class Numerica implements Nota {
 		return nota>=6;
 	}
 	
+	@Override
+	public String toString() {
+		return nota.toString();
+	}
+	
 	
 
 }
