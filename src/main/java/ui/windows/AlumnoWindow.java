@@ -23,7 +23,7 @@ public class AlumnoWindow extends SimpleWindow<AlumnoViewModel> {
 	protected void addActions(Panel panelActions) {
 		new Button(panelActions)
 		.setCaption("Ver asignaciones")
-		.onClick(this::registrarVenta);
+		.onClick(this::verAsignaciones);
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class AlumnoWindow extends SimpleWindow<AlumnoViewModel> {
 		
 	}
 
-	public void registrarVenta() {
+	public void verAsignaciones() {
 		Dialog<?> dialog = new AsignacionesWindow(this,this.getModelObject());
 		dialog.open();
 		dialog.onAccept(() -> {});
