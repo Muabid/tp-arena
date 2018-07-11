@@ -17,6 +17,7 @@ public class App extends Application {
 		public static void main(String[] arg) {
 			RepoAlumnos.start();
 			new App().start();
+			
 		}
 		@Override
 		protected Window<?> createMainWindow() {
