@@ -1,7 +1,11 @@
 package ui.windows;
 
+import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
+import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
+import org.uqbar.arena.widgets.Selector;
+import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
@@ -12,7 +16,7 @@ import org.uqbar.arena.windows.WindowOwner;
 import domain.Alumno;
 import ui.vm.AlumnoViewModel;
 
-public class AlumnoWindow extends SimpleWindow<AlumnoViewModel> {
+public class AlumnoWindow extends Dialog<AlumnoViewModel> {
 
 	public AlumnoWindow(WindowOwner parent, Alumno alumno) {
 		super(parent, new AlumnoViewModel(alumno));
@@ -27,8 +31,22 @@ public class AlumnoWindow extends SimpleWindow<AlumnoViewModel> {
 
 	@Override
 	protected void createFormPanel(Panel formPanel) {
-		this.setTitle("HOLA");
+		this.setTitle("ALGUN TITULO");
+		Panel form = new Panel(formPanel);
+		form.setLayout(new ColumnLayout(2));
 
+		new Label(form).setText("Nombre");
+		new Label(form).bindValueToProperty("alumnoSeleccionado.nombre");
+
+		new Label(form).setText("Apellido");
+		new Label(form).bindValueToProperty("alumnoSeleccionado.apellido");
+
+		new Label(form).setText("Github");
+		new Label(form).bindValueToProperty("alumnoSeleccionado.usuarioGitHub");
+	
+		new Label(form).setText("Legajo");
+		new Label(form).bindValueToProperty("alumnoSeleccionado.legajo");
+		
 	}
 
 	public void verAsignaciones() {

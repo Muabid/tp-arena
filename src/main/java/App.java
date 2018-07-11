@@ -7,12 +7,15 @@ import domain.Alumno;
 import domain.Asignacion;
 import domain.Conceptual;
 import domain.Numerica;
+import repos.RepoAlumnos;
 import ui.vm.AlumnoViewModel;
 import ui.windows.AlumnoWindow;
+import ui.windows.BuscarAlumnoWindow;
 
 public class App extends Application {
 
 		public static void main(String[] arg) {
+			RepoAlumnos.start();
 			new App().start();
 		}
 		@Override
@@ -22,7 +25,7 @@ public class App extends Application {
 			Alumno a= new Alumno("Bruno", "Cobos", "1223", "Muabid",Arrays.asList(asig,asig2));
 			AlumnoViewModel al = new AlumnoViewModel(a);
 			
-			return new AlumnoWindow(this,a);
+			return new BuscarAlumnoWindow(this);
 		}
 	}
 	

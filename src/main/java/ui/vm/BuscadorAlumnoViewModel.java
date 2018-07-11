@@ -1,8 +1,11 @@
 package ui.vm;
 
+import org.uqbar.commons.utils.Observable;
+
 import domain.Alumno;
 import repos.RepoAlumnos;
 
+@Observable
 public class BuscadorAlumnoViewModel {
 	
 	Alumno alumnoSeleccionado;
