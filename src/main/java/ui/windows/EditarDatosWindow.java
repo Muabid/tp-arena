@@ -21,18 +21,10 @@ public class EditarDatosWindow extends Dialog<AlumnoViewModel> {
 	}
 
 	@Override
-	protected void executeTask() {
-		System.out.println("Me aceptaron, yuppiiii!!!");
-		super.executeTask();
-	}
-	
-	@Override
 	protected void addActions(Panel actions) {
-		new Button(actions).setCaption("Actualizar").onClick(()->this.getModelObject().actualizar());
+		new Button(actions).setCaption("Actualizar").onClick(() -> this.getModelObject().actualizar());
 		new Button(actions).setCaption("Cancelar").onClick(this::cancel);
 	}
-
-	
 
 	@Override
 	protected void createFormPanel(Panel form) {
