@@ -18,7 +18,7 @@ public class Alumno {
 	private String usuarioGitHub;
 	private List<Asignacion> asignaciones;
 	
-	public Alumno(String nombre,String apellido, String legajo, String usuarioGitHub,
+	public Alumno(String nombre,String apellido, String legajo, String usuarioGitHub, String password,
 			List<Asignacion> asignacionesTarea) {
 		
 		this.nombre=nombre;
@@ -26,6 +26,7 @@ public class Alumno {
 		this.usuarioGitHub=usuarioGitHub;
 		this.asignaciones= asignacionesTarea;
 		this.apellido=apellido;
+		this.contraseña=password;
 		
 	}
 	
