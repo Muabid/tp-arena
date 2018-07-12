@@ -21,11 +21,6 @@ public class App extends Application {
 		}
 		@Override
 		protected Window<?> createMainWindow() {
-			Asignacion<Numerica> asig = new Asignacion<>("TP Arena",null, Arrays.asList(new Numerica(10),new Numerica(5)));
-			Asignacion<Conceptual> asig2= new Asignacion<>("Parcial",null,Arrays.asList(new Conceptual('M',null)));
-			Alumno a= new Alumno("Bruno", "Cobos", "1223", "Muabid",Arrays.asList(asig,asig2));
-			AlumnoViewModel al = new AlumnoViewModel(a);
-			
 			return new BuscarAlumnoWindow(this);
 		}
 	}
