@@ -1,22 +1,21 @@
 package ui.windows;
 
 
+
 import org.uqbar.arena.widgets.NumericField;
+import org.uqbar.arena.widgets.PasswordField;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.windows.Dialog;
-import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
-
-import domain.Alumno;
-
+import exception.ExcepcionDeUsuario;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
-
 import ui.vm.BuscadorAlumnoViewModel;
 
-public class BuscarAlumnoWindow extends SimpleWindow<BuscadorAlumnoViewModel>{
 
+public class BuscarAlumnoWindow extends SimpleWindow<BuscadorAlumnoViewModel>{
+	
 	
 	public BuscarAlumnoWindow(WindowOwner parent) {
 		super(parent, new BuscadorAlumnoViewModel());
@@ -25,9 +24,9 @@ public class BuscarAlumnoWindow extends SimpleWindow<BuscadorAlumnoViewModel>{
 	
 	@Override
 	protected void addActions(Panel panel) {
-		new Button(panel).setCaption("Buscar")
-		.onClick(this::buscar);
-	
+		Button boton = new Button(panel).setCaption("Buscar");
+		boton.onClick(this::loggear);
+		boton.disableOnError();
 	}
 
 	@Override
@@ -35,17 +34,30 @@ public class BuscarAlumnoWindow extends SimpleWindow<BuscadorAlumnoViewModel>{
 		this.setTitle("Menu Alumno");
 
 		new Label(mainPanel)
-				.setText("Ingrese su Legajo");
-		new NumericField(mainPanel).bindValueToProperty("legajo");
+				.setText("Ingrese legajo");
+		new NumericField(mainPanel).bindValueToProperty("usuario");
+		
+		new Label(mainPanel)
+		.setText("Ingrese su contraseña");
+		new PasswordField(mainPanel).bindValueToProperty("password");
+
+		
+		
 		mainPanel.setWidth(200);
 
 	}
 	
-	public void buscar() {
-		getModelObject().buscar();
+	public void loggear() {
+		try {
+		getModelObject().loggear();
 		Dialog<?> window = new AlumnoWindow(this,getModelObject().getAlumnoSeleccionado());
 		window.open();
-			
+		} 
+		
+		catch (ExcepcionDeUsuario e) {
+			Dialog<?> window = new ErrorDeLoggeoWindow(this, e.getMessage());
+			window.open();
+		} 							
 	}
 	
 
