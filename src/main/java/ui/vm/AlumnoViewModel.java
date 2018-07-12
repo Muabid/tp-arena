@@ -14,12 +14,14 @@ public class AlumnoViewModel {
 	private String nombre;
 	private String apellido;
 	private String usuarioGitHub;
+	private String legajo;
 
 	public AlumnoViewModel(Alumno alumno) {
 		this.alumnoSeleccionado = alumno;
 		this.nombre=alumno.getNombre();
 		this.apellido=alumno.getApellido();
 		this.usuarioGitHub=alumno.getUsuarioGitHub();
+		this.legajo=alumno.getLegajo();
 	}
 	
 	/*
@@ -29,9 +31,18 @@ public class AlumnoViewModel {
 		alumnoSeleccionado.setApellido(apellido);
 		alumnoSeleccionado.setNombre(nombre);
 		alumnoSeleccionado.setUsuarioGitHub(usuarioGitHub);
+		alumnoSeleccionado.setLegajo(legajo);
 	}
 	
 	
+	public String getLegajo() {
+		return legajo;
+	}
+
+	public void setLegajo(String legajo) {
+		this.legajo = legajo;
+	}
+
 	public Alumno getAlumnoSeleccionado() {
 		return alumnoSeleccionado;
 	}

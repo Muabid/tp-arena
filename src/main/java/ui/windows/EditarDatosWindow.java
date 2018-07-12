@@ -41,6 +41,11 @@ public class EditarDatosWindow extends Dialog<AlumnoViewModel> {
 
 		new Label(form).setText("Github");
 		new TextBox(form).bindValueToProperty("usuarioGitHub");
+		
+
+		new Label(form).setText("Legajo");
+		new TextBox(form).bindValueToProperty("legajo");
+
 
 	}
 

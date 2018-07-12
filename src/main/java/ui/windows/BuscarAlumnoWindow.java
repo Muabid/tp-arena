@@ -24,7 +24,7 @@ public class BuscarAlumnoWindow extends SimpleWindow<BuscadorAlumnoViewModel>{
 	
 	@Override
 	protected void addActions(Panel panel) {
-		Button boton = new Button(panel).setCaption("Buscar");
+		Button boton = new Button(panel).setCaption("Buscar").setAsDefault();
 		boton.onClick(this::loggear);
 		boton.disableOnError();
 	}
