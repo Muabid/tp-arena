@@ -27,7 +27,7 @@ public class RepoAlumnos {
 	}
 	
 	public static String obtenerContraseña(String legajo) {
-		return alumnos.stream().filter(a->a.getLegajo().equals(legajo)).findFirst().get().getContraseña();
+		return buscar(legajo).getContraseña();
 	}
 	
 	
