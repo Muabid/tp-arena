@@ -31,7 +31,7 @@ public class AlumnoWindow extends Dialog<AlumnoViewModel> {
 
 	@Override
 	protected void createFormPanel(Panel formPanel) {
-		this.setTitle("ALGUN TITULO");
+		this.setTitle("Campus virtual");
 		Panel form = new Panel(formPanel);
 		form.setLayout(new ColumnLayout(2));
 
