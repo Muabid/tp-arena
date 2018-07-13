@@ -5,7 +5,7 @@ import junit.framework.Assert;
 import repos.RepoAlumnos;
 
 
-public class test {
+public class TestGlobal {
 	Alumno bruno;
 	Alumno karen;
 	
@@ -16,6 +16,12 @@ public class test {
 		bruno=RepoAlumnos.buscar("1223");
 		karen=RepoAlumnos.buscar("1314");
 		new App().start();	
+	}
+	
+	@Test
+	
+	public void testBruno() {
+	Assert.assertEquals("BrunoC", bruno.getNombre());	
 	}
 	
 	
