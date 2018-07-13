@@ -22,14 +22,14 @@ public class EditarDatosWindow extends Dialog<AlumnoViewModel> {
 
 	@Override
 	protected void addActions(Panel actions) {
-		new Button(actions).setCaption("Actualizar").onClick(() -> this.getModelObject().actualizar());
-		new Button(actions).setCaption("Cancelar").onClick(this::cancel);
+		new Button(actions).setCaption("Actualizar").onClick(() -> {this.getModelObject().actualizar(); this.close();});
+		new Button(actions).setCaption("Cancelar").onClick(() -> {this.getModelObject().cancelar(); this.close();});
 	}
 
 	@Override
 	protected void createFormPanel(Panel form) {
 
-		this.setTitle("ALGUN TITULO");
+		this.setTitle("Editar datos");
 		Panel edit = new Panel(form);
 		edit.setLayout(new ColumnLayout(2));
 
