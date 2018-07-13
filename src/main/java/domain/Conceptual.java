@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.Optional;
-
 public class Conceptual implements Nota {
 
 	private String nota;
@@ -27,7 +25,6 @@ public class Conceptual implements Nota {
 	public String toString() {
 		return nota.toString() ;
 	}
-	
-	
+
 	
 }

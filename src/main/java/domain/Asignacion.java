@@ -2,16 +2,12 @@ package domain;
 
 import java.util.List;
 
-import org.uqbar.commons.utils.Dependencies;
 import org.uqbar.commons.utils.Observable;
 
 @Observable
 public class Asignacion {
 
 	private String descripcion;
-	
-	
-	
 	
 	public String getDescripcion() {
 		return descripcion;
