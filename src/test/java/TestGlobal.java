@@ -22,6 +22,8 @@ public class TestGlobal {
 	
 	public void testBruno() {
 	Assert.assertEquals("BrunoC", bruno.getNombre());	
+	Assert.assertEquals("BrunoC", bruno.getApellido());
+	Assert.assertEquals("BrunoC", bruno.getUsuarioGitHub());
 	}
 	
 	
