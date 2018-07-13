@@ -1,7 +1,6 @@
 package ui.windows;
 
 
-
 import org.uqbar.arena.widgets.NumericField;
 import org.uqbar.arena.widgets.PasswordField;
 import org.uqbar.arena.widgets.Panel;
@@ -9,9 +8,6 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 import exception.ExcepcionDeUsuario;
-
-import java.awt.Color;
-
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import ui.vm.BuscadorAlumnoViewModel;
@@ -37,8 +33,7 @@ public class BuscarAlumnoWindow extends SimpleWindow<BuscadorAlumnoViewModel>{
 		this.setTitle("Campus virtual");
 
 		new Label(mainPanel)
-				.setText("Ingrese legajo").setBackground(Color.BLACK);
-				
+				.setText("Ingrese legajo").setWidth(300);
 		new NumericField(mainPanel).bindValueToProperty("usuario");
 		
 		new Label(mainPanel)
