@@ -3,9 +3,10 @@ package ui.vm;
 import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
-
+import org.uqbar.lacar.ui.model.Action;
 import domain.Alumno;
 import repos.RepoAlumnos;
+
 
 @Observable
 public class AlumnoViewModel {
@@ -18,10 +19,7 @@ public class AlumnoViewModel {
 
 	public AlumnoViewModel(Alumno alumno) {
 		this.alumnoSeleccionado = alumno;
-		this.nombre=alumno.getNombre();
-		this.apellido=alumno.getApellido();
-		this.usuarioGitHub=alumno.getUsuarioGitHub();
-		this.legajo=alumno.getLegajo();
+		this.asignar(alumno);
 	}
 	
 	/*
@@ -32,6 +30,17 @@ public class AlumnoViewModel {
 		alumnoSeleccionado.setNombre(nombre);
 		alumnoSeleccionado.setUsuarioGitHub(usuarioGitHub);
 		alumnoSeleccionado.setLegajo(legajo);
+	}
+	
+	public void asignar(Alumno alumno) {
+		this.nombre=alumno.getNombre();
+		this.apellido=alumno.getApellido();
+		this.usuarioGitHub=alumno.getUsuarioGitHub();
+		this.legajo=alumno.getLegajo();
+	}
+
+	public void cancelar() {
+		asignar(this.alumnoSeleccionado);
 	}
 	
 	
