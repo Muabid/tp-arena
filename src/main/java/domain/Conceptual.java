@@ -4,37 +4,30 @@ import java.util.Optional;
 
 public class Conceptual implements Nota {
 
-	private Character nota;
-	private Optional<Character> modificador;
+	private String nota;
 
-	public Conceptual(Character nota, Optional<Character> modificador) {
+	public Conceptual(String nota) {
 		this.nota = nota;
-		this.modificador = modificador;
-	}
+		}
 
-	public Character getNota() {
+	public String getNota() {
 		return nota;
 	}
 
-	public void setNota(Character nota) {
+	public void setNota(String nota) {
 		this.nota = nota;
-	}
-
-	public Optional<Character> getModificador() {
-		return modificador;
-	}
-
-	public void setModificador(Optional<Character> modificador) {
-		this.modificador = modificador;
 	}
 
 	@Override
 	public boolean aprobada() {
-		return !nota.equals('M');
+		return !nota.equals("M");
 	}
 
 	@Override 
 	public String toString() {
-		return nota.toString();
+		return nota.toString() ;
 	}
+	
+	
+	
 }
