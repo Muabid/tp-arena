@@ -7,23 +7,25 @@ import org.uqbar.commons.utils.Observable;
 @Observable
 public class Asignacion {
 
-	private String descripcion;
+	private int id;
+	private String title;
+	private String description;
+	private List<Nota> notas;
 	
 	public String getDescripcion() {
-		return descripcion;
+		return description;
 	}
 
 
 	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+		this.description = descripcion;
 	}
-	
-	private List<Nota> notas;
-	
-	
-	public Asignacion(String descripcion,List<Nota> notas) {
+		
+	public Asignacion(int id, String title, String descripcion,List<Nota> notas) {
+		this.id = id;
+		this.title = title;
 		this.notas=notas;
-		this.descripcion=descripcion;
+		this.description=descripcion;
 	}
 	
 	
