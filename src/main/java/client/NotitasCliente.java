@@ -1,11 +1,13 @@
 package client;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 
 import com.google.common.net.HttpHeaders;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 
@@ -71,8 +73,15 @@ public class NotitasCliente {
 
     	String output = response.getEntity(String.class);
     	System.out.println(output);
-    	//Mapeo de asignacion para devolver una lista de asignaciones
+    	return new Gson().fromJson(output, AsignacionesRespuesta.class).asignaciones();
     }
     
   
+    public static void main(String[] arg) {
+    List<Asignacion> asig=	new NotitasCliente().getAsignaciones("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFI"
+				+ "wN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho");
+    System.out.print(asig);
+    }
+    
+    
 }

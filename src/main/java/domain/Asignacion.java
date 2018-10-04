@@ -4,12 +4,16 @@ import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
 
+import com.google.gson.annotations.SerializedName;
+
 @Observable
 public class Asignacion {
 
+	
 	private int id;
 	private String title;
 	private String description;
+	@SerializedName("grades")
 	private List<Nota> notas;
 	
 	public String getDescripcion() {
