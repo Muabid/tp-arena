@@ -1,5 +1,7 @@
 package client;
 
+import java.util.List;
+
 import javax.ws.rs.core.MediaType;
 
 import com.google.common.net.HttpHeaders;
@@ -8,6 +10,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 
 import domain.Alumno;
+import domain.Asignacion;
 
 public class NotitasCliente {
 	private Client client;
@@ -23,7 +26,7 @@ public class NotitasCliente {
     
     public Alumno getEstudiante(String TOKEN) {	    	
     	ClientResponse response = this.client.resource(API).path(STUDENT)
-    			.header(HttpHeaders.AUTHORIZATION, TOKEN)  //cambiar a token parametro
+    			.header(HttpHeaders.AUTHORIZATION, TOKEN)
                 .accept(MediaType.APPLICATION_JSON)
                 .get(ClientResponse.class);
     	
@@ -33,18 +36,19 @@ public class NotitasCliente {
     	}
 
     	String output = response.getEntity(String.class);
-    	System.out.println(output);
+    	//System.out.println(output);
     	return new Gson().fromJson(output, Alumno.class);
     	
     }
         
     public void actualizarDatosEstudiante(String TOKEN, Alumno alumnoActualizado) {
+    	
     	String input = new Gson().toJson(alumnoActualizado);
     		
     	ClientResponse response = this.client.resource(API).path(STUDENT)
-    							.header(HttpHeaders.AUTHORIZATION, TOKEN) //cambiar a token parametro
-    							.accept(MediaType.APPLICATION_JSON)
-    							.put(ClientResponse.class, input);
+    		.header(HttpHeaders.AUTHORIZATION, TOKEN)
+    		.accept(MediaType.APPLICATION_JSON)
+    		.put(ClientResponse.class, input);
     		
     	if (response.getStatus() != 201) {
     		throw new RuntimeException("Failed : HTTP error code : "
@@ -53,9 +57,22 @@ public class NotitasCliente {
     		
     }
 
-    static public void main(String[] argv) {
-    	Alumno a=	new NotitasCliente().getEstudiante("31");
-    	System.out.print(a.getApellido());
+    public List<Asignacion> getAsignaciones(String TOKEN) {
+    	
+    	ClientResponse response = this.client.resource(API).path(ASSIGNMENTS)
+    		.header(HttpHeaders.AUTHORIZATION, TOKEN)
+            .accept(MediaType.APPLICATION_JSON)
+            .get(ClientResponse.class);
+    	
+    	if (response.getStatus() != 200) {
+    		throw new RuntimeException("Failed : HTTP error code : "
+    		+ response.getStatus());
+    	}
+
+    	String output = response.getEntity(String.class);
+    	System.out.println(output);
+    	//Mapeo de asignacion para devolver una lista de asignaciones
     }
+    
   
 }
