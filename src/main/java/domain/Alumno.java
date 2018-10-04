@@ -6,19 +6,32 @@ import java.util.function.Predicate;
 
 import org.uqbar.commons.utils.Observable;
 
+import com.google.gson.annotations.SerializedName;
+
 
 @Observable
 public class Alumno {
 	
 	private String usuario;
 	
-
+	
 	private String contraseña;
+	@SerializedName("first_name")
 	private String nombre;
+	@SerializedName("last_name")
 	private String apellido;
+	
 	private String legajo;
+	@SerializedName("github_user")
 	private String usuarioGitHub;
 	private List<Asignacion> asignaciones;
+	
+	public Alumno(String nombre,String apellido, String legajo, String usuarioGitHub) {
+		this.nombre=nombre;
+		this.legajo=legajo;
+		this.usuarioGitHub=usuarioGitHub;
+		this.apellido=apellido;
+	}
 	
 	public Alumno(String nombre,String apellido, String legajo, String usuarioGitHub, String password,
 			List<Asignacion> asignacionesTarea) {
@@ -26,12 +39,12 @@ public class Alumno {
 		this.nombre=nombre;
 		this.legajo=legajo;
 		this.usuarioGitHub=usuarioGitHub;
-		this.asignaciones= asignacionesTarea;
 		this.apellido=apellido;
+		this.asignaciones= asignacionesTarea;
 		this.contraseña=password;
 		
 	}
-	
+		
 	
 	public String getNombre() {
 		return nombre;

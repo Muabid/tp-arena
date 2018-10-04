@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
 import org.uqbar.lacar.ui.model.Action;
+
+import client.NotitasCliente;
 import domain.Alumno;
 import repos.RepoAlumnos;
 
@@ -25,11 +27,13 @@ public class AlumnoViewModel {
 	/*
 	 * Se puede delegar un metodo actualizar(nombre,apellido,usuarioGithub) en alumno, pero no sé
 	 */
-	public void actualizar() {
+	public void actualizar() {	
 		alumnoSeleccionado.setApellido(apellido);
 		alumnoSeleccionado.setNombre(nombre);
 		alumnoSeleccionado.setUsuarioGitHub(usuarioGitHub);
 		alumnoSeleccionado.setLegajo(legajo);
+		
+		new NotitasCliente().actualizarDatosEstudiante(alumnoSeleccionado);
 	}
 	
 	public void asignar(Alumno alumno) {

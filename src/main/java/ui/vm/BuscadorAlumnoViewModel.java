@@ -2,6 +2,8 @@ package ui.vm;
 
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.commons.utils.Observable;
+
+import client.NotitasCliente;
 import domain.Alumno;
 import repos.RepoAlumnos;
 import ui.windows.ErrorDeLoggeoWindow;
@@ -13,6 +15,7 @@ public class BuscadorAlumnoViewModel {
 	Alumno alumnoSeleccionado;
 	String usuario;
 	String password;
+	
 	
 	
 	public Alumno getAlumnoSeleccionado() {
@@ -37,10 +40,12 @@ public class BuscadorAlumnoViewModel {
 	}
 	
 	public void loggear() throws ExcepcionDeUsuario{
-		try {
+	/*	try {
 
-		if (RepoAlumnos.obtenerContraseña(usuario).equals(password)) {
-				alumnoSeleccionado = RepoAlumnos.buscar(usuario);
+	
+			if (RepoAlumnos.obtenerContraseña(usuario).equals(password)) {
+			//	alumnoSeleccionado = RepoAlumnos.buscar(usuario);
+				
 		}
 		
 		else {
@@ -51,6 +56,8 @@ public class BuscadorAlumnoViewModel {
 		catch(java.util.NoSuchElementException e) {
 			throw new ExcepcionDeUsuario("Legajo inexistente");
 		}
+		*/
+		alumnoSeleccionado = new NotitasCliente().getEstudiante("");
 		
 	}
 	
