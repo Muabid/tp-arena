@@ -1,6 +1,8 @@
 package domain;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 import org.uqbar.commons.utils.Observable;
 
@@ -87,6 +89,12 @@ public class Alumno {
 
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
+	}
+	
+	public long xs() {
+		Consumer<Asignacion> dx= (asig) -> {asig.ponerNota(new Numerica(2));};
+		Predicate<Asignacion> xd = (asignacion)->asignacion.aprobada();
+		return asignaciones.stream().filter(xd).count();
 	}
 	
 }
