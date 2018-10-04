@@ -104,10 +104,4 @@ public class Alumno {
 		this.contraseña = contraseña;
 	}
 	
-	public long xs() {
-		Consumer<Asignacion> dx= (asig) -> {asig.ponerNota(new Numerica(2));};
-		Predicate<Asignacion> xd = (asignacion)->asignacion.aprobada();
-		return asignaciones.stream().filter(xd).count();
-	}
-	
 }
