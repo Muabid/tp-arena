@@ -20,13 +20,14 @@ public class RequestServiceTest {
 	  public void setUp() throws Exception {
 	      
 		  this.requester = new NotitasCliente();
+		  this.requester.setToken(TOKEN);
 	   
 	  }
 	  
 	  @Test
 	  public void obtenerAlumno() throws Exception {
 	  
-		  Alumno alumnoObtenido = this.requester.getEstudiante(TOKEN);
+		  Alumno alumnoObtenido = this.requester.getEstudiante();
 		  Assert.assertEquals("Fa", alumnoObtenido.getNombre());
 	        
 	  }
@@ -34,7 +35,7 @@ public class RequestServiceTest {
 	  @Test
 	  public void obtenerAsignacionesAlumno() throws Exception {
 	    
-		  List<Asignacion> notitas = this.requester.getAsignaciones(TOKEN);
+		  List<Asignacion> notitas = this.requester.getAsignaciones();
 		  Assert.assertEquals("Entrega 1 del TP Anual", notitas.get(0).getDescripcion());
 	        
 	  } 
@@ -42,8 +43,8 @@ public class RequestServiceTest {
 	  @Test
 	  public void actualizarDatosEstudiante()  throws Exception {
 		  
-		  this.requester.actualizarDatosEstudiante(TOKEN , new Alumno("Fa", "Raona", "1594521", "dino"));
-		  Alumno alumnoObtenido = this.requester.getEstudiante(TOKEN);
+		  this.requester.actualizarDatosEstudiante(new Alumno("Fa", "Raona", "1594521", "dino"));
+		  Alumno alumnoObtenido = this.requester.getEstudiante();
 		  Assert.assertEquals("Fa", alumnoObtenido.getNombre());
 		  
 	  }
