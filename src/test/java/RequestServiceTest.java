@@ -25,20 +25,26 @@ public class RequestServiceTest {
 	  
 	  @Test
 	  public void obtenerAlumno() throws Exception {
-	    
-		  //Se solicita todos los datos de un alumno por su token
-	    	
+	  
 		  Alumno alumnoObtenido = this.requester.getEstudiante(TOKEN);
-		  Assert.assertEquals("GASTON", alumnoObtenido.getNombre());
+		  Assert.assertEquals("Fa", alumnoObtenido.getNombre());
 	        
 	  }
 	  
 	  @Test
 	  public void obtenerAsignacionesAlumno() throws Exception {
 	    
-		  //Se solicita todos los datos de un alumno por su token
 		  List<Asignacion> notitas = this.requester.getAsignaciones(TOKEN);
-		  //Assert.assertEquals(lista, notitas);
+		  Assert.assertEquals("Entrega 1 del TP Anual", notitas.get(0).getDescripcion());
 	        
 	  } 
+	  
+	  @Test
+	  public void actualizarDatosEstudiante()  throws Exception {
+		  
+		  this.requester.actualizarDatosEstudiante(TOKEN , new Alumno("Fa", "Raona", "1594521", "dino"));
+		  Alumno alumnoObtenido = this.requester.getEstudiante(TOKEN);
+		  Assert.assertEquals("Fa", alumnoObtenido.getNombre());
+		  
+	  }
 }
