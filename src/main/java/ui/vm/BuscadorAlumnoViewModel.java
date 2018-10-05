@@ -57,7 +57,9 @@ public class BuscadorAlumnoViewModel {
 			throw new ExcepcionDeUsuario("Legajo inexistente");
 		}
 		*/
-		alumnoSeleccionado = new NotitasCliente().getEstudiante("");
+		
+		//antes habría que setear el token no sé
+		alumnoSeleccionado = new NotitasCliente().getEstudiante();
 		
 	}
 	
