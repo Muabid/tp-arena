@@ -19,14 +19,19 @@ public class NotitasCliente {
     private static final String API = "http://notitas.herokuapp.com";
     private static final String STUDENT = "student";
     private static final String ASSIGNMENTS = "student/assignments";
+    public String TOKEN;
     
+    //De algun lado tiene que sacar el token
+    public void setToken(String TOKEN) {
+    	this.TOKEN = TOKEN;
+    }
     
     public NotitasCliente(){
     	this.client=Client.create();
     }
     
     
-    public Alumno getEstudiante(String TOKEN) {	    	
+    public Alumno getEstudiante() {	    	
     	ClientResponse response = this.client.resource(API).path(STUDENT)
     			.header(HttpHeaders.AUTHORIZATION, TOKEN)
                 .accept(MediaType.APPLICATION_JSON)
@@ -43,7 +48,7 @@ public class NotitasCliente {
     	
     }
         
-    public void actualizarDatosEstudiante(String TOKEN, Alumno alumnoActualizado) {
+    public void actualizarDatosEstudiante(Alumno alumnoActualizado) {
     	
     	String input = new Gson().toJson(alumnoActualizado);
     		
@@ -59,7 +64,7 @@ public class NotitasCliente {
     		
     }
 
-    public List<Asignacion> getAsignaciones(String TOKEN) {
+    public List<Asignacion> getAsignaciones() {
     	
     	ClientResponse response = this.client.resource(API).path(ASSIGNMENTS)
     		.header(HttpHeaders.AUTHORIZATION, TOKEN)
@@ -75,13 +80,5 @@ public class NotitasCliente {
     	System.out.println(output);
     	return new Gson().fromJson(output, AsignacionesRespuesta.class).asignaciones();
     }
-    
-  
-    public static void main(String[] arg) {
-    List<Asignacion> asig=	new NotitasCliente().getAsignaciones("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFI"
-				+ "wN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho");
-    System.out.print(asig);
-    }
-    
     
 }
