@@ -30,12 +30,17 @@ public class NotitasCliente {
     	this.client=Client.create();
     }
     
-    
-    public Alumno getEstudiante() {	    	
-    	ClientResponse response = this.client.resource(API).path(STUDENT)
+    private ClientResponse GETAlServidor(String Path) {
+    	
+    	return this.client.resource(API).path(Path)
     			.header(HttpHeaders.AUTHORIZATION, TOKEN)
                 .accept(MediaType.APPLICATION_JSON)
                 .get(ClientResponse.class);
+    	
+    }
+    
+    public Alumno getEstudiante() {	    	
+    	ClientResponse response = this.GETAlServidor(STUDENT);
     	
     	if (response.getStatus() != 200) {
     		throw new RuntimeException("Failed : HTTP error code : "
@@ -43,7 +48,7 @@ public class NotitasCliente {
     	}
 
     	String output = response.getEntity(String.class);
-    	//System.out.println(output);
+    	System.out.println(output);
     	return new Gson().fromJson(output, Alumno.class);
     	
     }
@@ -53,9 +58,9 @@ public class NotitasCliente {
     	String input = new Gson().toJson(alumnoActualizado);
     		
     	ClientResponse response = this.client.resource(API).path(STUDENT)
-    		.header(HttpHeaders.AUTHORIZATION, TOKEN)
-    		.accept(MediaType.APPLICATION_JSON)
-    		.put(ClientResponse.class, input);
+        		.header(HttpHeaders.AUTHORIZATION, TOKEN)
+        		.accept(MediaType.APPLICATION_JSON)
+        		.put(ClientResponse.class, input);
     		
     	if (response.getStatus() != 201) {
     		throw new RuntimeException("Failed : HTTP error code : "
@@ -66,10 +71,7 @@ public class NotitasCliente {
 
     public List<Asignacion> getAsignaciones() {
     	
-    	ClientResponse response = this.client.resource(API).path(ASSIGNMENTS)
-    		.header(HttpHeaders.AUTHORIZATION, TOKEN)
-            .accept(MediaType.APPLICATION_JSON)
-            .get(ClientResponse.class);
+    	ClientResponse response = this.GETAlServidor(ASSIGNMENTS);
     	
     	if (response.getStatus() != 200) {
     		throw new RuntimeException("Failed : HTTP error code : "
