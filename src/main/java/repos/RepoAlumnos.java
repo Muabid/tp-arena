@@ -33,8 +33,8 @@ public class RepoAlumnos {
 	
 	
 	public static void start() {
-		Asignacion asig = new Asignacion("TP Arena", Arrays.asList(new Numerica(10),new Numerica(5)));
-		Asignacion asig2= new Asignacion("Parcial", Arrays.asList(new Conceptual("B+")));
+		Asignacion asig = new Asignacion(1, "TP", "TP Arena", Arrays.asList(new Numerica(10),new Numerica(5)));
+		Asignacion asig2= new Asignacion(2, "P", "Parcial", Arrays.asList(new Conceptual("B+")));
 		
 		Alumno bruno= new Alumno("Bruno", "Cobos", "1223", "Muabid","holis",Arrays.asList(asig,asig2));
 		Alumno karen= new Alumno("Karen","Lafuente","1314","Kalafuente","diosa",Arrays.asList(asig));
